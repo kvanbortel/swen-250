@@ -1,0 +1,40 @@
+SWEN-250 Activity Reflection
+
+Name: Kayla Van Bortel
+
+================================================================
+Start Part 1
+Estimated Time	00:30
+Plan:
+(Order of implementation, testing approach, etc.)
+* print chart label
+* use a loop with increments of 20
+- for loop prints the loop variable and the converted C using a formatted line
+* test that output is successful and formatted nicely
+
+Complete
+Actual Time	00:23
+Observations:
+(Lessons learned, problems encountered, obstacles overcome, etc.)
+* don't forget the double quotes in a printf statement
+* pay attention to truncation when doing math with integers
+* I had to reference the slideshow since I've never worked with C before and we
+haven't covered it in class yet
+* I had to edit my vimrc because my tabs were quite large
+* My formatted '\t' was too large to match the example so I used padding instead
+* I compiled it 8 times: the first were syntactical mistakes and the rest was
+messing with formatting
+
+================================================================
+Start Part 2
+Estimated Time	HH MM
+Plan:
+(Order of implementation, testing approach, etc.)
+
+Complete
+Actual Time	HH MM
+Observations:
+(Lessons learned, problems encountered, obstacles overcome, etc.)
+
+
+================================================================
