@@ -4,14 +4,33 @@ Name: Kayla Van Bortel
 
 ================================================================
 Start
-Estimated Time	HH MM
+Estimated Time	01:00
 Plan:
 (Order of implementation, testing approach, etc.)
+* Make a loop that takes in one char at a time until EOF
+* Add 1 to total chars at start of loop
+* Create print statement outside of loop to see results
+- Check output
+* If the char is a newline, add 1 to total lines
+- Check output
+* Create a 'boolean' for in_word, set to 0
+* If newline is detected, add 1 to total words if in_word and reset in_word
+to 0 to allow for multiple newlines in a row
+* Detect if the char is a space and do the same: add 1 to total words if
+in_word and reset in_word
+* Set in_word to 1 overall
+- Check output
 
 Complete
-Actual Time	HH MM
+Actual Time	00:51
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* At first, I my number of words was too high. I realized I needed to wrap my
+in_word = 1 line in an else statement whch made the program more logical and
+fixed my issue.
+* I had to mess with the formatting of my print statement to get one space
+before 11, two before 64, and one before 375 to match the assignment. I did
+this with whitespace padding in my formatting.
 
 
 ================================================================
