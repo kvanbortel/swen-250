@@ -6,9 +6,9 @@
 #define TRUE  (1)
 
 int main() {
-	int tot_chars = 0 ;	/* total characters */
-	int tot_lines = 0 ;	/* total lines */
-	int tot_words = 0 ;	/* total words */
+    int tot_chars = 0 ;	/* total characters */
+    int tot_lines = 0 ;	/* total lines */
+    int tot_words = 0 ;	/* total words */
     int nchar ;         /* new character read in */
     int in_word = 0 ;   /* boolean to control counting words */
 
