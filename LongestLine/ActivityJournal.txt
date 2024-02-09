@@ -25,14 +25,23 @@ track what was happening when I moved it out
 
 ================================================================
 Part 2
-Estimated Time	HH MM
+Estimated Time	00:30
 Plan:
 (Order of implementation, testing approach, etc.)
+* create a helper function to find the size of an array
+* loop through the arr based on helper function to copy it over
+* compare new lines to "max" and only save arr if it's longer
+* print longest
 
 Complete
-Actual Time	HH MM
+Actual Time	00:42
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* I compiled twice with lots of easily fixed errors. Putting "[]" everywhere
+is not how to pass in arrays. Semicolons are important. Declaring things in
+proper places is also important.
+* gcc does not like 4 spaces; it likes tabs
+* I had to move my "max" declaration outside of the while loop. oops.
 
 
 ================================================================
