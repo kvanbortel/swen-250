@@ -2,9 +2,9 @@ image:
   name: kalrabb/docker-swen-250-identifier-convention-chkr-img:latest
 
 variables:
-  PROJECT_FOLDER: csv #Change this to your current folder/ project
-  BUILD_CMD: gcc -g -Wall -o test csv.c unit_tests.c #If you don't have a Makefile, put the build command here, else just call 'make'
-  RUN_CMD: valgrind --leak-check=full ./test #Assume the executable file is called 'test'  
+  PROJECT_FOLDER: csv # Change this to your current folder/ project
+  BUILD_CMD: make test # If you don't have a Makefile, put the build command here, else just call 'make'
+  RUN_CMD: valgrind --leak-check=full ./test # Assume the executable file is called 'test'  
 before_script:
   - cat /etc/lsb-release
   - which gcc
@@ -16,7 +16,7 @@ before_script:
 testrunner:
   script:
     - echo "**Start build**" 
-    - $BUILD_CMD  #Runs make, or custom command
-    - $RUN_CMD  #Runs the executable against valgrind
+    - $BUILD_CMD  # Runs make, or custom command
+    - $RUN_CMD  # Runs the executable against valgrind
     - echo "**Done**"
   stage: test 
