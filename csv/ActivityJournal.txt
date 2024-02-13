@@ -1,0 +1,46 @@
+SWEN-250 Activity Reflection
+
+Name: Kayla Van Bortel
+
+================================================================
+Implement code to pass all unit tests
+
+Estimated Time	01:00
+Plan:
+(Order of implementation, testing approach, etc.)
+* Read over instructions
+* Implement get_field() by looping to get next_char until MAX_CHARS
+- break if the next char is the end of the field
+- add chars to the field
+- end the field with a null terminator
+* Implement get_line() by using get_field on line.field[i] until the end of the line,
+increment nfields
+* Implement print_csv() with a loop using min() and the indexes of the header and data fields
+* Run the unit tests
+* Compile/Debug throughout
+
+Complete
+Actual Time	02:00
+Observations:
+(Lessons learned, problems encountered, obstacles overcome, etc.)
+* Figured out structs and typedefs work
+* Had to look very closely at the csv.h file
+
+
+================================================================
+Test correct operation from the command line
+
+Estimated Time	00:05
+Plan:
+(Order of implementation, testing approach, etc.)
+* Use the provided commands
+* Analyze the diff
+
+Complete
+Actual Time	00:02
+Observations:
+(Lessons learned, problems encountered, obstacles overcome, etc.)
+* My diff showed that my output was off by one
+
+
+================================================================
