@@ -1,0 +1,37 @@
+SWEN-250 Activity Journal
+C (no pointers) Practice Practicum
+
+Name: Kayla Van Bortel
+
+================================================================
+skip_spaces
+Actual Time	00:10?
+Lessons learned, problems encountered, obstacles overcome, etc.
+* This isn't Python. Stop putting ":" everywhere.
+
+================================================================
+find_next_word
+Actual Time	00:15?
+Lessons learned, problems encountered, obstacles overcome, etc.
+* For loop end condition
+
+================================================================
+change_to_upper
+Actual Time	00:30?
+Lessons learned, problems encountered, obstacles overcome, etc.
+* can use char in a for loop 
+
+================================================================
+capitialize_all_words
+Actual Time	00:40?
+Lessons learned, problems encountered, obstacles overcome, etc.
+* refactor to make it shorter and easier to read
+
+================================================================
+fix_bad_code
+Actual Time	00:01
+Lessons learned, problems encountered, obstacles overcome, etc.
+* warning: control reaches end of non-void function
+- have an else; not just all if's
+
+================================================================
