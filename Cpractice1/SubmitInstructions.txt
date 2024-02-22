@@ -1,0 +1,10 @@
+C (no pointers) Practice Practicum
+
+Submission is OPTIONAL!
+
+Put your files in a new CPractice1 directory at the top of your repository.
+
+Submit these two files:
+
+Activity_Journal_CPractice.txt
+cpractice1.c

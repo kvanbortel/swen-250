@@ -1,0 +1,30 @@
+SWEN-250 Activity Journal
+C (no pointers) Practice Practicum
+
+Name: Kayla Van Bortel
+
+================================================================
+find_char_in_array
+Actual Time	00:07
+Lessons learned, problems encountered, obstacles overcome, etc.
+* size?
+* mystring[i] != '\0' is a good for loop condition
+
+================================================================
+fix_bad_code
+Actual Time	00:01
+Lessons learned, problems encountered, obstacles overcome, etc.
+
+================================================================
+add_string_to_end
+Actual Time	00:04
+Lessons learned, problems encountered, obstacles overcome, etc.
+* check for NUL terminator in for loop instead of looping through the size
+
+================================================================
+get_string_info
+Actual Time	00:05?
+Lessons learned, problems encountered, obstacles overcome, etc.
+* syntax
+
+================================================================
