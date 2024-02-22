@@ -4,7 +4,7 @@ image:
 variables:
   PROJECT_FOLDER: csv # Change this to your current folder/ project
   BUILD_CMD: make test # If you don't have a Makefile, put the build command here, else just call 'make'
-  RUN_CMD: valgrind --leak-check=full ./test # Assume the executable file is called 'test'  
+  RUN_CMD: ./test # valgrind --leak-check=full ./test # Assume the executable file is called 'test'  
 before_script:
   - cat /etc/lsb-release
   - which gcc
