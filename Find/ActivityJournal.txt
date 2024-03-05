@@ -13,7 +13,7 @@ Plan:
 * Pay attention to constraints for the different functions
 
 Complete
-Actual Time	HH MM 15m, 7m
+Actual Time	HH MM 15m, 7m, 6m, 4m
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
 

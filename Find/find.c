@@ -64,7 +64,7 @@ int find_any_index(char string[], char stop[]) {
         }
         *p_str++;
     }
-    return NOT_FOUND ;	// placeholder
+    return NOT_FOUND ;
 }
 
 /*
@@ -76,7 +76,19 @@ int find_any_index(char string[], char stop[]) {
  *****
  */
 char *find_any_ptr(char *string, char* stop) {
-	return NULL ;	// placeholder
+	char *p_str = string;
+    char *p_stop = stop;
+    while (*p_str != '\0')
+    {
+        char *p_stop = stop;
+        while (*p_stop != '\0')
+        {
+            if (*p_str == *p_stop++)
+                return p_str;
+        }
+        *p_str++;
+    }
+    return NULL ;	// placeholder
 }
 
 /*
