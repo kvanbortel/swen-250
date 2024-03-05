@@ -36,7 +36,7 @@ int find_ch_index(char string[], char ch) {
  *****
  */
 char *find_ch_ptr(char *string, char ch) {
-	char *p_str = string;
+    char *p_str = string;
     for(; *p_str != '\0'; *p_str++)
     {
         if (*p_str == ch)
@@ -76,7 +76,7 @@ int find_any_index(char string[], char stop[]) {
  *****
  */
 char *find_any_ptr(char *string, char* stop) {
-	char *p_str = string;
+    char *p_str = string;
     while (*p_str != '\0') // check every character of p_str
     {
         char *p_stop = stop; // set stop back to the beginning for each match attempt
@@ -101,7 +101,7 @@ char *find_any_ptr(char *string, char* stop) {
  *****
  */
 char *find_substr(char *string, char* substr) {
-	char *p_str = string;
+    char *p_str = string;
     if (*substr == '\0')
         return p_str;
 
