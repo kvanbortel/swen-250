@@ -51,7 +51,20 @@ char *find_ch_ptr(char *string, char ch) {
  * in <stop>.
  */
 int find_any_index(char string[], char stop[]) {
-	return NOT_FOUND ;	// placeholder
+    int i;
+    int j;
+    char *p_str = string;
+    for (i = 0; *p_str != '\0'; i++)
+    {
+        char *p_stop = stop;
+        for (j = 0; *p_stop != '\0'; j++)
+        {
+            if (*p_str == *p_stop++)
+                return i;
+        }
+        *p_str++;
+    }
+    return NOT_FOUND ;	// placeholder
 }
 
 /*
