@@ -36,7 +36,13 @@ int find_ch_index(char string[], char ch) {
  *****
  */
 char *find_ch_ptr(char *string, char ch) {
-	return NULL ;	// placeholder
+	char *p_str = string;
+    while(*p_str != '\0')
+    {
+        if (*p_str++ == ch)
+            return --p_str;
+    }
+    return NULL ;
 }
 
 /*
