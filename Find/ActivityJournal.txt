@@ -1,12 +1,16 @@
 SWEN-250 Activity Reflection
 
-Name:
+Name: Kayla Van Bortel
 
 ================================================================
 Start
-Estimated Time	HH MM
+Estimated Time	01:30
 Plan:
 (Order of implementation, testing approach, etc.)
+* Implement one function at a time starting from the first one
+* Use working pointers when necessary, incrementing then to move down the strings
+* Get one function working before moving onto the next
+* Pay attention to constraints for the different functions
 
 Complete
 Actual Time	HH MM

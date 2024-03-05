@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "find.h"
 
@@ -17,7 +18,14 @@
  * or (-1) if the <ch> is not in <string>.
  */
 int find_ch_index(char string[], char ch) {
-	return NOT_FOUND ;	// placeholder
+    char *p_str = string;
+    int i;
+    for (i = 0; *p_str != '\0'; i++)
+    {
+        if (*p_str++ == ch)
+            return i;
+    }
+	return NOT_FOUND ;
 }
 
 /*
