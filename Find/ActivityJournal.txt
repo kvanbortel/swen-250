@@ -13,9 +13,13 @@ Plan:
 * Pay attention to constraints for the different functions
 
 Complete
-Actual Time	HH MM 15m, 7m, 6m, 4m
+Actual Time	00:55
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* In the last function I had to take a closer look at my algorithm and saw where it had gone wrong
+* Working pointers are useful
+* Return p_str instead of *p_str
+* Sometimes longer code for easier readability is better (especially with increments and decrements)
 
 
 ================================================================
