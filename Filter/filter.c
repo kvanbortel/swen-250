@@ -19,10 +19,10 @@
  * Return true if and only if character <c> is in string <s>.
  */
 static bool includes(char c, char *s) {
-	while( *s && c != *s ) {
-		s++ ;
-	}
-	return c == *s ;
+    while( *s && c != *s ) {
+        s++ ;
+    }
+    return c == *s ;
 }
 
 /*
@@ -30,11 +30,11 @@ static bool includes(char c, char *s) {
  * Return true if and only if string <pre> is a prefix of string <s>.
  */
 static bool prefix(char *s, char *pre) {
-	while( *pre && *s == *pre ) {
-		s++ ;
-		pre++ ;
-	}
-	return *pre == NUL ;
+    while( *pre && *s == *pre ) {
+        s++ ;
+        pre++ ;
+    }
+    return *pre == NUL ;
 }
 
 /*
@@ -63,20 +63,20 @@ void filter_ch_index(char string[], char result[], char ch) {
  *****
  */
 char *filter_ch_ptr(char *string, char ch) {
- 	char *p_str = string;
-    char *p_copy = malloc(strlen(string) + 1);
-    char *wp_copy = p_copy;
-    for ( ; *p_str != NUL; p_str++)
+    char *src_pos = string;
+    char *dest = malloc(strlen(string) + 1);
+    char *dest_pos = dest;
+    for ( ; *src_pos != NUL; src_pos++)
     {
-        if (*p_str != ch)
+        if (*src_pos != ch)
         {
-            *p_copy = *p_str;
-            p_copy++;
+            *dest_pos = *src_pos;
+            dest_pos++;
         }
     }
-    *p_copy = NUL;
-    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
-	return result ;
+    *dest_pos = NUL;
+    char *result = realloc(dest, dest_pos - dest + 1);
+    return result ;
 }
 
 /*
@@ -84,7 +84,7 @@ char *filter_ch_ptr(char *string, char ch) {
  * any characters in <remove>.
  */
 void filter_any_index(char string[], char result[], char remove[]) {
-	int i = 0;
+    int i = 0;
     int j = 0;
     for ( ; string[i] != NUL; i++)
     {
@@ -107,20 +107,20 @@ void filter_any_index(char string[], char result[], char remove[]) {
  *****
  */
 char *filter_any_ptr(char *string, char* remove) {
- 	char *p_str = string;
-    char *p_copy = malloc(strlen(string) + 1);
-    char *wp_copy = p_copy;
-    for ( ; *p_str != NUL; p_str++)
+    char *src_pos = string;
+    char *dest = malloc(strlen(string) + 1);
+    char *dest_pos = dest;
+    for ( ; *src_pos != NUL; src_pos++)
     {
-        if (!includes(*p_str, remove))
+        if (!includes(*src_pos, remove))
         {
-            *p_copy = *p_str;
-            p_copy++;
+            *dest_pos = *src_pos;
+            dest_pos++;
         }
     }
-    *p_copy = NUL;
-    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
-	return result ;
+    *dest_pos = NUL;
+    char *result = realloc(dest, dest_pos - dest + 1);
+    return result ;
 }
 
 /*
@@ -133,23 +133,23 @@ char *filter_any_ptr(char *string, char* remove) {
  *****
  */
 char *filter_substr(char *string, char* substr) {
- 	char *p_str = string;
-    char *p_copy = malloc(strlen(string) + 1);
-    char *wp_copy = p_copy;
-    while (*p_str != NUL)
+    char *src_pos = string;
+    char *dest = malloc(strlen(string) + 1);
+    char *dest_pos = dest;
+    while (*src_pos != NUL)
     {
-        if (prefix(p_str, substr))
+        if (prefix(src_pos, substr))
         {
-            p_str += strlen(substr);
+            src_pos += strlen(substr);
         }
         else
         {
-            *p_copy = *p_str;
-            p_copy++;
-            p_str++;
+            *dest_pos = *src_pos;
+            dest_pos++;
+            src_pos++;
         }
     }
-    *p_copy = NUL;
-    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
-	return result ;
+    *dest_pos = NUL;
+    char *result = realloc(dest, dest_pos - dest + 1);
+    return result ;
 }

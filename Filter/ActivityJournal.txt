@@ -10,12 +10,15 @@ Plan:
 * Complete one function at a time, in order
 * Make sure to use copies of pointers to keep starting positions
 * Comment my plan out before writing the function
+* Use valgrind and -fsanitize to look at memory allocation issues
 
 Complete
-Actual Time	HH MM
+Actual Time	01:20
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
-* 
+* pay attention to the math when using realloc()
+* look closely to avoid off-by-one errors
+* make a commented plan and then simplify it from the start before adding the code in
 
 
 ================================================================
