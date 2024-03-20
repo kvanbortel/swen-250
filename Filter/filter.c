@@ -41,7 +41,17 @@ static bool prefix(char *s, char *pre) {
  * Copy <string> to <result> while removing all occurrences of <ch>.
  */
 void filter_ch_index(char string[], char result[], char ch) {
-	result[0] = NUL ; // placeholder
+    int i = 0;
+    int j = 0;
+    for ( ; string[i] != NUL; i++)
+    {
+        if (string[i] != ch)
+        {
+            result[j] = string[i];
+            j++;
+        }
+    }
+    result[j] = NUL ;
 }
 
 /*
@@ -53,7 +63,20 @@ void filter_ch_index(char string[], char result[], char ch) {
  *****
  */
 char *filter_ch_ptr(char *string, char ch) {
-	return strcpy(malloc(1), "") ; // placeholder
+ 	char *p_str = string;
+    char *p_copy = malloc(strlen(string) + 1);
+    char *wp_copy = p_copy;
+    for ( ; *p_str != NUL; p_str++)
+    {
+        if (*p_str != ch)
+        {
+            *p_copy = *p_str;
+            p_copy++;
+        }
+    }
+    *p_copy = NUL;
+    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
+	return result ;
 }
 
 /*
@@ -61,7 +84,17 @@ char *filter_ch_ptr(char *string, char ch) {
  * any characters in <remove>.
  */
 void filter_any_index(char string[], char result[], char remove[]) {
-	result[0] = NUL ;
+	int i = 0;
+    int j = 0;
+    for ( ; string[i] != NUL; i++)
+    {
+        if (!includes(string[i], remove))
+        {
+            result[j] = string[i];
+            j++;
+        }
+    }
+    result[j] = NUL ;
 }
 
 /*
@@ -74,7 +107,20 @@ void filter_any_index(char string[], char result[], char remove[]) {
  *****
  */
 char *filter_any_ptr(char *string, char* remove) {
-	return strcpy(malloc(1), "") ; // placeholder
+ 	char *p_str = string;
+    char *p_copy = malloc(strlen(string) + 1);
+    char *wp_copy = p_copy;
+    for ( ; *p_str != NUL; p_str++)
+    {
+        if (!includes(*p_str, remove))
+        {
+            *p_copy = *p_str;
+            p_copy++;
+        }
+    }
+    *p_copy = NUL;
+    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
+	return result ;
 }
 
 /*
@@ -87,5 +133,23 @@ char *filter_any_ptr(char *string, char* remove) {
  *****
  */
 char *filter_substr(char *string, char* substr) {
-	return strcpy(malloc(1), "") ; // placeholder
+ 	char *p_str = string;
+    char *p_copy = malloc(strlen(string) + 1);
+    char *wp_copy = p_copy;
+    while (*p_str != NUL)
+    {
+        if (prefix(p_str, substr))
+        {
+            p_str += strlen(substr);
+        }
+        else
+        {
+            *p_copy = *p_str;
+            p_copy++;
+            p_str++;
+        }
+    }
+    *p_copy = NUL;
+    char *result = realloc(wp_copy, p_copy - wp_copy + 1);
+	return result ;
 }
