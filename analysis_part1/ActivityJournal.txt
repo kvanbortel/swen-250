@@ -36,14 +36,17 @@ Observations:
 
 add_node_at_head
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* Test for valid parameters first
+* Go down the list and implement one at a time
 
 Complete
-Actual Time	HH MM
+Actual Time	00:10
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* Check for NULL pointer before trying to dereference it
 
 
 ================================================================
