@@ -112,8 +112,14 @@ int valid_parameters( struct linked_list *p_list, char *word )
 // Hint: be sure to maintain both the p_previous and p_next pointers in each node.
 int add_node_at_head( struct linked_list *p_list, char *word )
 {
-
-	return -1 ;	// REMOVE THIS and replace with working code
+	if (valid_parameters(p_list, word) == 0)
+		return 0;
+	struct node *new_node = create_node(word);
+	p_list->p_head = new_node;
+	p_list->p_current = new_node;
+	if (p_list->p_tail == NULL)
+		p_list->p_tail = new_node;
+	return 1;
 }
 
 // If p_list is NULL return 0.
