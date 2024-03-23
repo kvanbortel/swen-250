@@ -21,14 +21,16 @@ Observations:
 ================================================================
 valid_parameters
 Start
-Estimated Time	HH MM
+Estimated Time	00:02
 Plan:
 (Order of implementation, testing approach, etc.)
+* Create an if statement
 
 Complete
-Actual Time	HH MM
+Actual Time	00:01
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* Remember to de-reference the pointer when checking for empty string
 
 ================================================================
 

@@ -91,7 +91,9 @@ struct node *create_node( char *word )
 // Returns 1 if all three tests pass. Returns 0 if any test fails.
 int valid_parameters( struct linked_list *p_list, char *word )
 {
-	return 0 ;
+	if (p_list == NULL || word == NULL || *word == '\0')
+		return 0;
+	return 1 ;
 }
 
 // Inserts a node at the beginning of the linked list.
