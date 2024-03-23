@@ -72,8 +72,16 @@ char *get_next_word( struct linked_list *p_list )
 // This function returns a pointer to the allocated node.
 struct node *create_node( char *word )
 {
+	struct node *p_new_node = malloc(sizeof(struct node));
 
-	return NULL ;	// REMOVE THIS and replace with working code
+	p_new_node->word_count = 1; // initialize the count
+	p_new_node->unique_word = NULL;
+	p_new_node->p_previous = NULL;
+	p_new_node->p_next = NULL;
+
+	p_new_node->unique_word = malloc(strlen(word) + 1);
+	strcpy(p_new_node->unique_word, word);
+	return p_new_node;
 }
 
 // Implement this function right after you get create_node working.
