@@ -52,14 +52,18 @@ Observations:
 ================================================================
 clear_linked_list
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* Carefully loop through the linked list
+* Update every element
 
 Complete
-Actual Time	HH MM
+Actual Time	00:20
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* You can chain '->'
+* Don't have to make a temporary struct node
 
 
 ================================================================
