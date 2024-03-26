@@ -187,20 +187,18 @@ int add_node_after_current( struct linked_list *p_list, char *word )
     struct node *old_current = p_list->p_current;
     struct node *new_node = create_node(word);
     if (old_current == NULL) // empty list
-        add_node_at_head(p_list, word);
+        return add_node_at_head(p_list, word);
+
+    new_node->p_previous = old_current;
+    p_list->p_current = new_node;
+    if (old_current->p_next == NULL) // if inserting at tail
+        p_list->p_tail = new_node;
     else
     {
-        new_node->p_previous = old_current;
-        p_list->p_current = new_node;
-        if (old_current->p_next == NULL) // if inserting at tail
-            p_list->p_tail = new_node;
-        else
-        {
-            new_node->p_next = old_current->p_next;
-            p_list->p_tail->p_previous = p_list->p_current;
-        }
-        old_current->p_next = new_node;
+        new_node->p_next = old_current->p_next;
+        p_list->p_tail->p_previous = p_list->p_current;
     }
+    old_current->p_next = new_node;
     return 1;
 }
 
