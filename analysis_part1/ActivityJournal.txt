@@ -102,14 +102,17 @@ Observations:
 ================================================================
 get_previous_word and get_next_word
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* Follow step-by-step
+* Simplify
 
 Complete
-Actual Time	HH MM
+Actual Time	00:05
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* I could remove a lot of the checks because get_current_word already covered them
 
 
 ================================================================

@@ -52,7 +52,10 @@ char *get_current_word( struct linked_list *p_list )
 // return a pointer to the word in this new current record.
 char *get_previous_word( struct linked_list *p_list )
 {
-    return NULL ;
+    if(p_list->p_current->p_previous == NULL)
+        return NULL;
+    p_list->p_current = p_list->p_current->p_previous;
+    return get_current_word(p_list);
 }
 
 // First verifies that p_list is not NULL. If it is NULL return NULL and do nothing else.
@@ -63,7 +66,10 @@ char *get_previous_word( struct linked_list *p_list )
 // return a pointer to the word in this new current record.
 char *get_next_word( struct linked_list *p_list )
 {
-    return NULL ;
+    if(p_list->p_current->p_next == NULL)
+        return NULL;
+    p_list->p_current = p_list->p_current->p_next;
+    return get_current_word(p_list);
 }
 
 // Implement this function first to create an initialized linked list node.
