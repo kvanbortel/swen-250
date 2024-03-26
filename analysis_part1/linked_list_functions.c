@@ -37,7 +37,9 @@ struct linked_list *get_test_p_list()
 // On success returns a pointer to the word in the current record in the linked list.
 char *get_current_word( struct linked_list *p_list ) 
 {
-    return NULL ;
+    if (p_list == NULL || p_list->p_current == NULL)
+        return NULL;
+    return p_list->p_current->unique_word;
 }
 
 // First verifies that p_list is not NULL. If it is NULL return NULL and do nothing else.

@@ -87,14 +87,16 @@ Observations:
 ================================================================
 get_current_word
 Start
-Estimated Time	HH MM
+Estimated Time	00:02
 Plan:
 (Order of implementation, testing approach, etc.)
+* Return NULL or the pointer to the word
 
 Complete
-Actual Time	HH MM
+Actual Time	00:01
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* I referred to the struct to see that the pointer was "unique_word"
 
 
 ================================================================
