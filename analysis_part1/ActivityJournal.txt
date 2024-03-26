@@ -118,14 +118,18 @@ Observations:
 ================================================================
 find_word
 Start
-Estimated Time	HH MM
+Estimated Time	00:20
 Plan:
 (Order of implementation, testing approach, etc.)
+* Implement one step at a time
+* Use unit tests as feedback for anything I missed
 
 Complete
-Actual Time	HH MM
+Actual Time	00:35
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* Pay close attention when I'm moving pointers around
+* Resest p_current to the head at the beginning of the function!!1!111
 
 
 ================================================================

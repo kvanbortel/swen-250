@@ -149,6 +149,8 @@ int clear_linked_list( struct linked_list *p_list )
     if (p_list == NULL)
         return 0;
 
+    p_list->p_current = p_list->p_head;
+
     struct node *old_next;
     while (p_list->p_current != NULL)
     {
@@ -186,6 +188,7 @@ int add_node_after_current( struct linked_list *p_list, char *word )
 
     struct node *old_current = p_list->p_current;
     struct node *new_node = create_node(word);
+
     if (old_current == NULL) // empty list
         return add_node_at_head(p_list, word);
 
@@ -235,7 +238,27 @@ int add_node_after_current( struct linked_list *p_list, char *word )
 // return value summary: -1 if input parameters are bad, 0 if not found, 1 if found.
 int find_word( struct linked_list *p_list, char *word )
 {
+    if (valid_parameters(p_list, word) == 0 || p_list->p_head == NULL)
+        return -1;
 
-    return -2 ;    // REMOVE THIS and replace with working code
+    p_list->p_current = p_list->p_head;
+    int result;
+    char *curr_word = get_current_word(p_list);
+
+    while (1)
+    {
+        result = strcmp(curr_word, word);
+        if (result == 0) // word found
+            return 1;
+        else if (result > 0) // curr_word > word
+        {
+            p_list->p_current = p_list->p_current->p_previous;
+            break;
+        }
+        if (p_list->p_current == p_list->p_tail) // end is reached
+            break;
+        curr_word = get_next_word(p_list);
+    }
+    return 0;
 }
 
