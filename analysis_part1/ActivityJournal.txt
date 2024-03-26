@@ -69,15 +69,20 @@ Observations:
 ================================================================
 add_node_after_current
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* Draw out what I'm doing
+* Account for empty list and inserting at head and tail
+* Account for all the pointers
 
 Complete
-Actual Time	HH MM
+Actual Time	00:25
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
-
+* Work on one case at a time to get it working
+* Pay attention to when pointers are reassigned
+* Make it neater once it's working
 
 ================================================================
 get_current_word
