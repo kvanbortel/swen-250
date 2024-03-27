@@ -16,7 +16,13 @@
 //      position is zero based index into the string/
 char *get_pointer_at_position( char *pstring, int position )
 {
-	return pstring + 1000 ;	// bogus value to cause unit tests to fail
+    int i;
+    for ( i = position; *pstring != '\0'; pstring++, i--)
+    {
+        if (i == 0)
+            return pstring;
+    }
+	return NULL;
 }
 
 
@@ -38,7 +44,19 @@ char *get_pointer_at_position( char *pstring, int position )
 #define BAD_POINTER (int *)1	// create a bogus pointer for unit testing
 int *get_y_values( int *px, int m, int b, int number_of_x_values )
 {
-	return BAD_POINTER ;	// create a bogus pointer to make all unit tests fail.
+    if (px == NULL || number_of_x_values <= 0)
+        return NULL;
+
+    int *py = malloc(sizeof(int) * number_of_x_values);
+    int *wpy = py;
+    int *wpx = px;
+    int i;
+    for ( i = 0; i < number_of_x_values; i++, wpx++, wpy++)
+    {
+        *wpy = *wpx * m + b;
+    }
+
+	return py;
 }
 
 
@@ -51,7 +69,17 @@ int *get_y_values( int *px, int m, int b, int number_of_x_values )
 // heap. You must free this space if and only if the number_of_y_values is > 0.
 int get_sum_and_free_space( int *py, int number_of_y_values )
 {
-	return -999 ;	// return a value to force failure!
+    if (py == NULL || py == BAD_POINTER || number_of_y_values <= 0)
+        return 0;
+    int *pywork = py;
+    int sum = 0;
+    int i;
+    for (i = 0; i < number_of_y_values; i++, pywork++)
+    {
+        sum += *pywork;
+    }
+    free(py);
+    return sum;
 }
 
 
@@ -60,7 +88,11 @@ int get_sum_and_free_space( int *py, int number_of_y_values )
 // return 0 if either pointer is NULL.
 int same_array( int *pfirst, int *psecond )
 {
-	return -999 ;	// return illegal value to make unit tests fail.
+    if (pfirst == NULL || psecond == NULL)
+        return 0;
+    if (*pfirst == *psecond)
+        return 1;
+    return 0;
 }
 
 // The first time this is called return 1.
@@ -68,7 +100,12 @@ int same_array( int *pfirst, int *psecond )
 // Continue this pattern returning 1, then 0, then 1 and so on.
 int bool_flip_flop()
 {
-	return 2 ;		// return illegal value to force unit tests to fail.
+    static int value = 0;
+    if (value == 0)
+        value = 1;
+    else
+        value = 0;
+	return value ;		// return illegal value to force unit tests to fail.
 }
 
 // This function is implemented incorrectly. You need to correct it.

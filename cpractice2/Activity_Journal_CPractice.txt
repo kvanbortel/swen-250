@@ -14,28 +14,33 @@ General comments:
 
 ================================================================
 get_pointer_at_position
-Actual Time	MM
+Actual Time	03
 Lessons learned, problems encountered, obstacles overcome, etc.
+* return pstring, not *pstring. Compare *pstring to terminator, not pstring
 
 ================================================================
 get_y_values
-Actual Time	MM
+Actual Time	05
 Lessons learned, problems encountered, obstacles overcome, etc.
+* remember to increment the pointer I'm building
+* use a working pointer to save the beginning
 
 ================================================================
 get_sum_and_free_space
-Actual Time	MM
+Actual Time	06
 Lessons learned, problems encountered, obstacles overcome, etc.
+* use a work pointer and then free the original pointer after everything
 
 ================================================================
 same_array
-Actual Time	MM
+Actual Time	01
 Lessons learned, problems encountered, obstacles overcome, etc.
 
 ================================================================
 bool_flip_flop
-Actual Time	MM
+Actual Time	01
 Lessons learned, problems encountered, obstacles overcome, etc.
+* static int
 
 ================================================================
 fix_bad_code
