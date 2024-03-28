@@ -20,19 +20,21 @@
 // You can re-write this code completely if you prefer.
 int fix_bad_code( char *pstring )
 {
-	int result = 1 ;	// is this a good choice for initialization?
+	int result = 0 ;	// is this a good choice for initialization?
 	
 	// Fix this next line so it correctly returns 0 if the passed pointer is NULL or
 	// if the pointer points to an empty string.
-	if ( ( !( pstring = NULL ) ) || *pstring == '\n'  )
-		return result + 2 ;
+	if ( pstring == NULL || *pstring == '\0' )
+		return result;
 	
 	// does this loop work correctly?
-	while ( *pstring == '\0' )
+	while ( *pstring != '\0' )
+	{
 		if ( isdigit( *pstring++ ) )	// isdigit returns true if the passed character is a number 0 through 9
 			result = 1 ;
+	}
 		
-	return result + 7 ;
+	return result;
 }
 
 // Determine if the p_unknown pointer points to one of the integers in the  array of integers.
@@ -45,10 +47,19 @@ int fix_bad_code( char *pstring )
 // NOTE -- only look at the positions defined as valid by the num_int_in_array!
 int is_pointer_in_array( int *p_int_array, int *p_unknown, int num_int_in_array )
 {
-	// your code here
+	int i;
+	for (i = 0 ; i < num_int_in_array; i++)
+	{
+		int *wp_int = p_int_array;
+		int j;
+		for (j = 0; j < num_int_in_array; wp_int++, j++)
+		{
+			if (*p_unknown == *wp_int)
+				return 1;
+		}
+	}
+	return 0;
 
-
-	return -1 ;	// Fix this -- it is incorrect but allows the program to compile and run.
 }
 
 // The first time this is called return the first unsigned char in the mylist array.
@@ -60,13 +71,25 @@ unsigned char my_random()
 {
 	unsigned char mylist[] = { 5, 9, 254, 129, 55, 8, 32, 99, 207 } ; // DO NOT change this array!
 	// your code here
-
-
-	return 255 ;	// Fix this -- it is incorrect but allows the program to compile and run.
+	static unsigned char value = 0;
+	static int i = 0;
+	int size = sizeof(mylist);
+	if (i < size)
+	{
+		value = mylist[i];
+		i += 1;
+	}
+	else
+	{
+		i = 0;
+		value = mylist[i];
+		i++;
+	}
+	return value ;
 }
 
 // Using malloc create an integer array called  p_product that contains exactly number_of_entries.
-// Store the product of each value in pfirst and psecond in the corresponding postion in p_sum.
+// Store the product of each value in pfirst and psecond in the corresponding postion in p_product.
 // e.g. p_product[0] = p_first[0] * p_second[0]; p_product[1] = p_first[1] * p_second[1]
 // The p_first and p_second arrays are the same size.
 // The third parameter is the number of entries in each array.
@@ -74,9 +97,17 @@ unsigned char my_random()
 // Return NULL if the number of entries is <= 0.
 int *create_array_of_products( int *p_first, int *p_second, int number_of_entries )
 {
+	if (p_first == NULL || p_second == NULL || number_of_entries <= 0)
+		return NULL;
 
+	int *p_product = malloc(sizeof(int) * number_of_entries);
+	int i;
+	for (i = 0; i < number_of_entries; i++)
+	{
+		p_product[i] = p_second[i] * p_first[i];
+	}
 
-	return p_first ;	// Fix this -- this value causes all unit tests to fail.
+	return p_product ;
 }
 
 // Calculate the total of all of the entries in the passed array and return that total.
@@ -86,8 +117,19 @@ int *create_array_of_products( int *p_first, int *p_second, int number_of_entrie
 // hint: be sure to free the passed pointer only as described above!
 int get_total_and_free( int *p_array, int number_of_entries )
 {
+	if (p_array == NULL || number_of_entries <= 0)
+		return 0;
+
+	int *wp_array = p_array;
+	int sum = 0;
+	int i;
+	for (i = 0; i < number_of_entries; i++, wp_array++)
+	{
+		sum += *wp_array;
+	}
+	free (p_array);
 
 
-	return -1 ;		// Fix this -- causes all unit tests to fail.
+	return sum;
 }
 
