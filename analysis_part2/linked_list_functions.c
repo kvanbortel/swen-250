@@ -16,20 +16,20 @@
 // word functions.
 struct linked_list *get_test_p_list()
 {
-	static struct linked_list list ;
-	static struct node a = { "a", 1, NULL, NULL } ;
-	static struct node b = { "b", 1, NULL, NULL } ;
-	static struct node c = { "c", 1, NULL, NULL } ;
+    static struct linked_list list ;
+    static struct node a = { "a", 1, NULL, NULL } ;
+    static struct node b = { "b", 1, NULL, NULL } ;
+    static struct node c = { "c", 1, NULL, NULL } ;
 
-	list.p_head = &a ;
-	list.p_current = list.p_head ;
-	a.p_next = &b ;
-	b.p_previous = &a ;
-	b.p_next = &c ;
-	c.p_previous = &b ;
-	list.p_tail = &c ;
+    list.p_head = &a ;
+    list.p_current = list.p_head ;
+    a.p_next = &b ;
+    b.p_previous = &a ;
+    b.p_next = &c ;
+    c.p_previous = &b ;
+    list.p_tail = &c ;
 
-	return &list ;
+    return &list ;
 }
 
 // First verifies that p_list is not NULL. If it is NULL return NULL and do nothing else.
@@ -37,7 +37,9 @@ struct linked_list *get_test_p_list()
 // On success returns a pointer to the word in the current record in the linked list.
 char *get_current_word( struct linked_list *p_list ) 
 {
-	return NULL ;
+    if (p_list == NULL || p_list->p_current == NULL)
+        return NULL;
+    return p_list->p_current->unique_word;
 }
 
 // First verifies that p_list is not NULL. If it is NULL return NULL and do nothing else.
@@ -50,7 +52,10 @@ char *get_current_word( struct linked_list *p_list )
 // return a pointer to the word in this new current record.
 char *get_previous_word( struct linked_list *p_list )
 {
-	return NULL ;
+    if(p_list->p_current->p_previous == NULL)
+        return NULL;
+    p_list->p_current = p_list->p_current->p_previous;
+    return get_current_word(p_list);
 }
 
 // First verifies that p_list is not NULL. If it is NULL return NULL and do nothing else.
@@ -61,7 +66,10 @@ char *get_previous_word( struct linked_list *p_list )
 // return a pointer to the word in this new current record.
 char *get_next_word( struct linked_list *p_list )
 {
-	return NULL ;
+    if(p_list->p_current->p_next == NULL)
+        return NULL;
+    p_list->p_current = p_list->p_current->p_next;
+    return get_current_word(p_list);
 }
 
 // Implement this function first to create an initialized linked list node.
@@ -72,8 +80,16 @@ char *get_next_word( struct linked_list *p_list )
 // This function returns a pointer to the allocated node.
 struct node *create_node( char *word )
 {
+    struct node *p_new_node = malloc(sizeof(struct node));
 
-	return NULL ;	// REMOVE THIS and replace with working code
+    p_new_node->word_count = 1; // initialize the count
+    p_new_node->unique_word = NULL;
+    p_new_node->p_previous = NULL;
+    p_new_node->p_next = NULL;
+
+    p_new_node->unique_word = malloc(strlen(word) + 1);
+    strcpy(p_new_node->unique_word, word);
+    return p_new_node;
 }
 
 // Implement this function right after you get create_node working.
@@ -83,7 +99,9 @@ struct node *create_node( char *word )
 // Returns 1 if all three tests pass. Returns 0 if any test fails.
 int valid_parameters( struct linked_list *p_list, char *word )
 {
-	return 0 ;
+    if (p_list == NULL || word == NULL || *word == '\0')
+        return 0;
+    return 1 ;
 }
 
 // Inserts a node at the beginning of the linked list.
@@ -102,8 +120,21 @@ int valid_parameters( struct linked_list *p_list, char *word )
 // Hint: be sure to maintain both the p_previous and p_next pointers in each node.
 int add_node_at_head( struct linked_list *p_list, char *word )
 {
+    if (valid_parameters(p_list, word) == 0)
+        return 0;
 
-	return -1 ;	// REMOVE THIS and replace with working code
+    struct node *old_head = p_list->p_head;
+    struct node *new_node = create_node(word);
+    new_node->p_previous = NULL;
+    new_node->p_next = p_list->p_head;
+    if (old_head != NULL)
+        old_head->p_previous = new_node;
+
+    p_list->p_head = new_node;
+    p_list->p_current = new_node;
+    if (p_list->p_tail == NULL)
+        p_list->p_tail = new_node;
+    return 1;
 }
 
 // If p_list is NULL return 0.
@@ -114,9 +145,23 @@ int add_node_at_head( struct linked_list *p_list, char *word )
 // Lastly, return the number of nodes freed (which could be zero if p_list indicates an empty list).
 int clear_linked_list( struct linked_list *p_list )
 {
+    int count = 0;
+    if (p_list == NULL)
+        return 0;
 
-	p_list->p_tail = (struct node *) 1 ;	// BOGUS code to make unit test fail -- remove this!
-	return -1 ;	// REMOVE THIS and replace with working code
+    p_list->p_current = p_list->p_head;
+
+    struct node *old_next;
+    while (p_list->p_current != NULL)
+    {
+        old_next = p_list->p_current->p_next;
+        free(p_list->p_current);
+        p_list->p_current = old_next;
+        count++;
+    }
+    p_list->p_head = NULL;
+    p_list->p_tail = NULL;
+    return count;
 }
 
 
@@ -138,8 +183,26 @@ int clear_linked_list( struct linked_list *p_list )
 //       use the add_node_at_head function to create the new node.
 int add_node_after_current( struct linked_list *p_list, char *word )
 {
+    if (valid_parameters(p_list, word) == 0)
+        return 0;
 
-	return -1 ;	// REMOVE THIS and replace with working code
+    struct node *old_current = p_list->p_current;
+    struct node *new_node = create_node(word);
+
+    if (old_current == NULL) // empty list
+        return add_node_at_head(p_list, word);
+
+    new_node->p_previous = old_current;
+    p_list->p_current = new_node;
+    if (old_current->p_next == NULL) // if inserting at tail
+        p_list->p_tail = new_node;
+    else
+    {
+        new_node->p_next = old_current->p_next;
+        p_list->p_tail->p_previous = p_list->p_current;
+    }
+    old_current->p_next = new_node;
+    return 1;
 }
 
 // Searches the linked list for the passed word.
@@ -175,7 +238,27 @@ int add_node_after_current( struct linked_list *p_list, char *word )
 // return value summary: -1 if input parameters are bad, 0 if not found, 1 if found.
 int find_word( struct linked_list *p_list, char *word )
 {
+    if (valid_parameters(p_list, word) == 0 || p_list->p_head == NULL)
+        return -1;
 
-	return -2 ;	// REMOVE THIS and replace with working code
+    p_list->p_current = p_list->p_head;
+    int result;
+    char *curr_word = get_current_word(p_list);
+
+    while (1)
+    {
+        result = strcmp(curr_word, word);
+        if (result == 0) // word found
+            return 1;
+        else if (result > 0) // curr_word > word
+        {
+            p_list->p_current = p_list->p_current->p_previous;
+            break;
+        }
+        if (p_list->p_current == p_list->p_tail) // end is reached
+            break;
+        curr_word = get_next_word(p_list);
+    }
+    return 0;
 }
 
