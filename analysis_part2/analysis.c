@@ -65,6 +65,27 @@ int process_word ( struct linked_list *p_list, char *word )
 // NOTE -- this function MUST convert all words read to lower case only! e.g "First" becomes "first"
 int read_file( struct linked_list *p_list, char *file_name )
 {
+    FILE *input_file = validate_read_file_parameters( p_list, file_name ) ;
+
+    if ( input_file == NULL )
+        return 0 ;
+
+    // Now read and process the entire file.
+    int one_char = '\0' ;;
+//    char buffer[ MAX_WORD + 1 ] ;
+//    int index = 0 ;
+//    int in_a_word = 0 ;
+//    int word_count = 0 ;
+//    buffer[0] = '\0' ;
+    
+    for ( one_char = fgetc( input_file ) ; one_char != EOF ; one_char = fgetc( input_file ) )
+    {
+        // Process all of the characters in the file one at a time.
+		// Add your code here 
+    }
+
+    fclose( input_file ) ;
+	
 	// bogus return value
 	return -1 ;
 }
@@ -139,6 +160,19 @@ struct word_entry get_last_entry( struct linked_list *p_list )
 int write_unique_word_list_to_csv_file(  struct linked_list *p_list, char *file_name )
 {
 	int status = 0 ;
+
+    if ( p_list == NULL || p_list->p_head == NULL )
+        return status ;
+
+    if ( file_name == NULL || *file_name == '\0' )
+        return status ;
+
+    FILE *out_file = fopen( file_name, "w" ) ;
+
+    if ( out_file )
+    {
+		// Add your code here
+	}
 	
 	return status ;
 }
