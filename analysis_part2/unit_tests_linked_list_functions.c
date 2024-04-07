@@ -521,6 +521,31 @@ int test_linked_list_functions()
         "List has three entries so the cleared count must be 3. Your function returned %d", result )
         ? passcount++ : failcount++ ;
 
+    // Test 74 now add a node to the head
+    result = add_node_at_head( &list1, "first" ) ;
+    assert( result == 1,
+        "Expect result of 1 for success but rour function returned %d", result )
+        ? passcount++ : failcount++ ;
+
+	// Test 75 Now search for a word that is not in the list so expect result == 0
+	result = find_word( &list1, "whatever" ) ;
+	assert( result == 0,
+		"Expected to not find match for \"whatever\" in the list but find_word returned %d", result )
+		? passcount++ : failcount++ ;
+
+	// Test 76 Now add whatever to the current position so expect result == 1
+	result = add_node_after_current( &list1, "whatever") ;
+	assert( result == 1 && strcmp( list1.p_current->unique_word, "whatever" ) == 0,
+		"Added a second word to list using add_node_after_current. List should have \"whatever\" but has %s",
+		list1.p_current->unique_word )
+		? passcount++ : failcount++ ;
+
+	// Test 77 Now search for a word that is not in the list so expect result == 0
+	result = find_word( &list1, "zed" ) ;
+	assert( result == 0,
+		"Expected to not find match for \"zed\" in the list but find_word returned %d", result )
+		? passcount++ : failcount++ ;
+
     printf( "\nSummary of unit tests:\n%d tests passed\n%d tests failed\n\n", passcount, failcount ) ;
 
     return failcount ;

@@ -25,7 +25,9 @@ static FILE *validate_read_file_parameters( struct linked_list *p_list, char *fi
 static int check_linked_list( struct linked_list *p_list )
 {
 	// possible helper function if you want to implement it
-	return 0 ;
+	if (p_list == NULL)
+		return 0 ;
+	return 1;
 }
 
 // Optional helper function.
@@ -34,6 +36,13 @@ static int check_linked_list( struct linked_list *p_list )
 static struct word_entry get_current_entry( struct linked_list *p_list )
 {
 	struct word_entry entry = { NULL, 0 } ;	// initialize the structure to null string and 0 count
+
+	struct node *current = p_list->p_current;
+	if (current != NULL)
+	{
+		entry.unique_word = current->unique_word;
+		entry.word_count = current->word_count;
+	}
 
 	return entry ;
 }
@@ -52,9 +61,18 @@ static struct word_entry get_current_entry( struct linked_list *p_list )
 // For simplicity all words passed from the unit tests are all lower case only.
 int process_word ( struct linked_list *p_list, char *word )
 {
-    int status = 0 ;
+	if (p_list == NULL || word == NULL || *word == '\0')
+		return 0;
 
-    return status ;
+	int isFound = find_word(p_list, word);
+	if (isFound == 1)
+	{
+		p_list->p_current->word_count += 1;
+	}
+	else
+		return add_node_after_current(p_list, word);
+
+    return 1;
 }
 
 // First checks that the passed string with the file name is not a NULL pointer and is not an empty string.
@@ -97,12 +115,13 @@ int read_file( struct linked_list *p_list, char *file_name )
 // You must update the current pointer (p_current) to the node containing the first word.
 struct word_entry get_first_entry( struct linked_list *p_list )
 {
-	struct word_entry entry ;
-	
-	entry.word_count = 0 ;		// cover empty list case.
-	entry.unique_word = NULL ;	// init for empty list case.
+	struct word_entry entry = {NULL, 0};
+	if (p_list == NULL || p_list->p_head == NULL)
+		return entry;
 
-	return entry ;
+	p_list->p_current = p_list->p_head;
+	entry = get_current_entry(p_list);
+	return entry;
 }
 
 // Returns 0 in the word_count field if p_list is NULL.
