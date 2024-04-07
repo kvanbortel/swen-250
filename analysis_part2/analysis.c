@@ -145,11 +145,12 @@ struct word_entry get_next_entry( struct linked_list *p_list )
 // You must update the current pointer (p_current) to the node containing the previous word.
 struct word_entry get_prev_entry( struct linked_list *p_list )
 {
-	struct word_entry entry ;
+	struct word_entry entry = {NULL, 0};
+	if (p_list == NULL || p_list->p_current == p_list->p_head)
+		return entry;
 	
-	entry.word_count = 0 ;		// cover end of list case.
-	entry.unique_word = NULL ;	// init for empty list case.
-
+	p_list->p_current = p_list->p_current->p_previous;
+	entry = get_current_entry(p_list);
 	return entry ;
 }
 
