@@ -56,14 +56,16 @@ Observations:
 ================================================================
 get_last_entry
 Start
-Estimated Time	HH MM
+Estimated Time	00:01
 Plan:
 (Order of implementation, testing approach, etc.)
+* same as first entry but tail
 
 Complete
-Actual Time	HH MM
+Actual Time	00:01
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* misspelled
 
 
 ================================================================

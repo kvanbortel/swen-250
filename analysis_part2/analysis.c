@@ -159,10 +159,12 @@ struct word_entry get_prev_entry( struct linked_list *p_list )
 // You must update the current pointer (p_current) to the node containing the last word.
 struct word_entry get_last_entry( struct linked_list *p_list )
 {
-	struct word_entry entry ;
-	
-	entry.word_count = 0 ;		// cover empty list case.
-	entry.unique_word = NULL ;	// init for empty list case.
+	struct word_entry entry = {NULL, 0};
+	if (p_list == NULL || p_list->p_tail == NULL)
+		return entry;
+
+	p_list->p_current = p_list->p_tail;
+	entry = get_current_entry(p_list);
 
 	return entry ;
 }
