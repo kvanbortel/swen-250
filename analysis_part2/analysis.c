@@ -22,6 +22,7 @@ static FILE *validate_read_file_parameters( struct linked_list *p_list, char *fi
 
 // Optional helper function.
 // returns 1 if pointers are OK, returns 0 if either is NULL.
+#if 0
 static int check_linked_list( struct linked_list *p_list )
 {
 	// possible helper function if you want to implement it
@@ -29,6 +30,7 @@ static int check_linked_list( struct linked_list *p_list )
 		return 0 ;
 	return 1;
 }
+#endif
 
 // Optional helper function.
 // Returns an initialized word entry structure from the current record in the list.
