@@ -41,14 +41,16 @@ Observations:
 ================================================================
 get_next_entry
 Start
-Estimated Time	HH MM
+Estimated Time	00:03
 Plan:
 (Order of implementation, testing approach, etc.)
+* Do the same as previous but next node
 
 Complete
-Actual Time	HH MM
+Actual Time	00:01
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* get next node using p_current pointer, not just p_list
 
 
 ================================================================
