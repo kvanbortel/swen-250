@@ -199,7 +199,7 @@ int add_node_after_current( struct linked_list *p_list, char *word )
     else
     {
         new_node->p_next = old_current->p_next;
-        p_list->p_tail->p_previous = p_list->p_current;
+        old_current->p_next->p_previous = p_list->p_current;
     }
     old_current->p_next = new_node;
     return 1;

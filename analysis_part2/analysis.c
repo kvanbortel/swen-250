@@ -66,9 +66,7 @@ int process_word ( struct linked_list *p_list, char *word )
 
 	int isFound = find_word(p_list, word);
 	if (isFound == 1)
-	{
 		p_list->p_current->word_count += 1;
-	}
 	else
 		return add_node_after_current(p_list, word);
 
@@ -89,23 +87,41 @@ int read_file( struct linked_list *p_list, char *file_name )
         return 0 ;
 
     // Now read and process the entire file.
-    int one_char = '\0' ;;
-//    char buffer[ MAX_WORD + 1 ] ;
-//    int index = 0 ;
-//    int in_a_word = 0 ;
-//    int word_count = 0 ;
-//    buffer[0] = '\0' ;
+    int one_char = '\0' ;
+    char buffer[ MAX_WORD + 1 ] ;
+    int index = 0 ;
+    int in_a_word = 0 ;
+    int word_count = 0 ;
+    buffer[0] = '\0' ;
     
-    for ( one_char = fgetc( input_file ) ; one_char != EOF ; one_char = fgetc( input_file ) )
+    for ( one_char = fgetc( input_file ) ; one_char != EOF ; one_char = fgetc( input_file ))
     {
         // Process all of the characters in the file one at a time.
-		// Add your code here 
+		one_char = tolower(one_char);
+
+        // Count words that end with spaces
+        if(!isalpha(one_char)) {
+            if (in_a_word) {
+				word_count++;
+				buffer[index] = '\0';
+				process_word(p_list, buffer);
+				index = 0;
+			}
+
+            in_a_word = 0;
+        }
+
+        // Declare that we are in a word
+        else {
+			buffer[index] = one_char;
+			index++;
+            in_a_word = 1;
+		}
     }
 
     fclose( input_file ) ;
 	
-	// bogus return value
-	return -1 ;
+	return word_count ;
 }
 
 
@@ -184,6 +200,7 @@ struct word_entry get_last_entry( struct linked_list *p_list )
 int write_unique_word_list_to_csv_file(  struct linked_list *p_list, char *file_name )
 {
 	int status = 0 ;
+	int result = 0;
 
     if ( p_list == NULL || p_list->p_head == NULL )
         return status ;
@@ -195,9 +212,19 @@ int write_unique_word_list_to_csv_file(  struct linked_list *p_list, char *file_
 
     if ( out_file )
     {
-		// Add your code here
+		result = fprintf(out_file, "word,count\n");
+		if (result < 0)
+			return status;
+		struct word_entry entry = get_first_entry(p_list);
+		while (entry.unique_word != NULL) {
+			result = fprintf(out_file, "%s,%d\n", entry.unique_word, entry.word_count);
+			if (result < 0)
+				return status;
+			entry = get_next_entry(p_list);
+		}
 	}
 	
+	status = 1;
 	return status ;
 }
 

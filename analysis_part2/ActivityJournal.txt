@@ -86,25 +86,30 @@ Observations:
 ================================================================
 read_file through test 56
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* use previous C word finder for base
 
 Complete
-Actual Time	HH MM
+Actual Time	00:23
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* linked_list_function had an issue
+* add to unique words and count
+* check for !isalpha rather than checking isspace
 
 
 ================================================================
 read_file MLK_dream_excerpt only
 Start
-Estimated Time	HH MM
+Estimated Time	00:01
 Plan:
 (Order of implementation, testing approach, etc.)
+* do at the same time as the other tests
 
 Complete
-Actual Time	HH MM
+Actual Time	00:01
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
 
@@ -112,14 +117,17 @@ Observations:
 ================================================================
 write_unique_word_list_to_csv_file
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* use functions I already made
+* use a while loop
 
 Complete
-Actual Time	HH MM
+Actual Time	00:06
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* check for failure on fprintf
 
 
 ================================================================
