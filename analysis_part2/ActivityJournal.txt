@@ -133,14 +133,16 @@ Observations:
 ================================================================
 Add four unit tests to the unit_tests_student.c file
 Start
-Estimated Time	HH MM
+Estimated Time	00:10
 Plan:
 (Order of implementation, testing approach, etc.)
+* use given tests as reference
 
 Complete
-Actual Time	HH MM
+Actual Time	00:12
 Observations:
 (Lessons learned, problems encountered, obstacles overcome, etc.)
+* a test could require multiple steps
 
 
 ================================================================
