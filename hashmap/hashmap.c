@@ -60,8 +60,12 @@ unsigned int hash(char *key)
 	unsigned int hashvalue = 0;
 
 	//YOUR CODE HERE
+	for (; *key != '\0'; *key++)
+	{
+		hashvalue += *key;
+	}
 
-	return -1; //Replace this.  Allows code to compile for now
+	return hashvalue % BINSIZE;
 }
 
 /********************************************************************
