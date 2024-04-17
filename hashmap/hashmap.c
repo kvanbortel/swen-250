@@ -59,7 +59,6 @@ unsigned int hash(char *key)
 {
 	unsigned int hashvalue = 0;
 
-	//YOUR CODE HERE
 	for (; *key != '\0'; *key++)
 	{
 		hashvalue += *key;
@@ -81,8 +80,14 @@ e.g. strcmp('abc','abc') == 0 //would evaluate to true
  *******************************************************************/
 struct binEntry *lookup(char *key)
 {
-	struct binEntry  *entry;
-	// YOUR CODE HERE
+	struct binEntry *entry = hashtable[hash(key)];
+
+	for ( ; entry; entry = entry->next)
+	{
+		if (strcmp(entry->key, key) == 0)
+				return entry;
+	}
+	
 	return NULL;
 }
 
@@ -120,9 +125,26 @@ struct binEntry *insert(char *key,  char *value)
  ***************************************************************/
 void drop(char *key)
 {
-	// YOUR CODE GOES HERE
+	struct binEntry *entry = lookup(key);
+	if (entry == NULL)
+		return;
 
+	free (entry->key);
+	free (entry->value);
+	if (entry->next != NULL) // if not dropping tail
+	{
+		entry->next->prev = entry->prev;
+	}
+	if (entry->prev != NULL) // not dropping head
+	{
+		entry->prev->next = entry->next;
+	}
+	else // drop head
+	{
+		hashtable[hash(key)] = entry->next;
+	}
 
+	free(entry);
 }
 
 /**************************************************************************
