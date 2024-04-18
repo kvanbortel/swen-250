@@ -19,7 +19,7 @@ void shift_value( unsigned int *p_value, int shift )
     if (shift > 0)
         *p_value = *p_value << shift;
     else if (shift < 0)
-        *p_value = *p_value >> shift;
+        *p_value = *p_value >> -shift;
 }
 
 
@@ -63,5 +63,7 @@ void flip_all( unsigned int *p_value )
 //      unsigned int *p_register &= mask ;  // clear only bit 3!
 void clear_bit( unsigned int *p_value, unsigned int position )
 {
+    unsigned int not_value = ~(1 << position);
+    *p_value &= not_value;
 }
 
