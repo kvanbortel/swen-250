@@ -51,10 +51,11 @@ int *linear( int *x, int count, int m, int b )
 {
 	// int bogus = 0;
 	// int *y = &bogus;	// code to test failure case for NULL input parameter
-	if (x == NULL)
-		return NULL;
-
+	
 	int *y = NULL;
+
+	if (x)
+		y = (int *)malloc(sizeof(int) * count);
 
 	return y ;
 }
@@ -76,14 +77,26 @@ int unit_tests()
 {
 	int passcount = 0;	// default to failure (returns number of tests that passed)
 	int failcount = 0;
+	int x1[] = {1, 2};
 
 	// write test to verify that it returns a NULL pointer when the x pointer is NULL
 	int *p_work = linear(NULL, 1, 5, 10);
 	assert(p_work == NULL, "input x pointer is NULL but did not get a null pointer response") // don't try to print out an unknown pointer
 		? passcount++ : failcount++;
 
+	// insert a test for count > 0 before doing this next test!
+	// verify that it returns a NULL pointer when the count is <0 =
+	p_work = linear(x1, -1, 5, 10);
+	assert(p_work == NULL, "count is <= 0 but did not get a null pointer response")
+		? passcount++ : failcount++;
+
+	// verify a null pointer isn't returned when x is valid
+	p_work = linear(x1, 1, 5, 10);
+	assert(p_work != NULL, "input x poitnter is valid but got a null pointer response")
+		? passcount++ : failcount++;
+
 	printf("Passed: %d, Failed: %d\n", passcount, failcount);
-	return passcount;	// return number of tests that passed
+	return failcount;	// return number of tests that failed
 }
 
 int main( int arg_count, char *args[] )
