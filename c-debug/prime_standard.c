@@ -42,7 +42,7 @@ int main() {
   
     printf("Enter upper bound:\n");
     scanf("%d", &upper_bound);
-    upper_bound = 50;
+    upper_bound = upper_bound;
     primes[1] = 1;
     primes[2] = 1;
     for (i = 3; i <= upper_bound; i += 2) {
