@@ -155,6 +155,7 @@ int clear_linked_list( struct linked_list *p_list )
     while (p_list->p_current != NULL)
     {
         old_next = p_list->p_current->p_next;
+        free(p_list->p_current->unique_word);
         free(p_list->p_current);
         p_list->p_current = old_next;
         count++;
@@ -187,10 +188,11 @@ int add_node_after_current( struct linked_list *p_list, char *word )
         return 0;
 
     struct node *old_current = p_list->p_current;
-    struct node *new_node = create_node(word);
 
     if (old_current == NULL) // empty list
         return add_node_at_head(p_list, word);
+
+    struct node *new_node = create_node(word);
 
     new_node->p_previous = old_current;
     p_list->p_current = new_node;
