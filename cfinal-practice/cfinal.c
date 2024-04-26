@@ -84,24 +84,25 @@ int add_odd_integers( int *p_integers, int number_of_integers )
 int fix_bad_code( char *pstring )
 {
 	// test to return 0 if pstring is NULL
-	if ( pstring = NULL )
-		return -1 ;
+	if ( pstring == NULL )
+		return 0 ;
 
 	// make sure pstring is not NULL before attempting to use it
 	if ( pstring != NULL )
 	{
 		// return 0 if pstring is an empty string
-		if ( pstring == '\0' )
+		if ( *pstring == '\0' )
 			return 0 ;
 		else	// string is not empty so OK to swap.
 		{
-			pstring += 3 ;	// point to the third character
+			pstring += 2 ;	// point to the third character
 			// now swap the characters
-			*pstring = *( pstring + 1 ) ;
-			*( pstring + 1 ) = *pstring ;
+			char c = *pstring;
+			pstring[0] = pstring[1];
+			pstring[1] = c;
 		}
 	}
 	
-	return 2 ;
+	return 1 ;
 }
 
