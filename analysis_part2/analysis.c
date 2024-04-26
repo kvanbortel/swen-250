@@ -216,17 +216,20 @@ int write_unique_word_list_to_csv_file(  struct linked_list *p_list, char *file_
     {
 		result = fprintf(out_file, "word,count\n");
 		if (result < 0)
-			return status;
+			goto cleanup;
 		struct word_entry entry = get_first_entry(p_list);
 		while (entry.unique_word != NULL) {
 			result = fprintf(out_file, "%s,%d\n", entry.unique_word, entry.word_count);
 			if (result < 0)
-				return status;
+				goto cleanup;
 			entry = get_next_entry(p_list);
 		}
 	}
-	
+
 	status = 1;
-	return status ;
+
+cleanup:
+	fclose(out_file);
+	return status;
 }
 

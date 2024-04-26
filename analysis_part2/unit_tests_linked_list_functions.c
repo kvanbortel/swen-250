@@ -546,6 +546,8 @@ int test_linked_list_functions()
 		"Expected to not find match for \"zed\" in the list but find_word returned %d", result )
 		? passcount++ : failcount++ ;
 
+	clear_linked_list(&list1);
+
     printf( "\nSummary of unit tests:\n%d tests passed\n%d tests failed\n\n", passcount, failcount ) ;
 
     return failcount ;
