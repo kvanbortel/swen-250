@@ -32,8 +32,14 @@
 char *make_big_string_from_two( char *pfirst, char *psecond )
 {
 	// Your code here -- be sure to free pstring as described above!
+	if (!pfirst || !psecond)
+		return NULL;
 
-	return BOGUS_POINTER ;		// FIX THIS!!
+	int length = strlen(pfirst) + strlen(psecond) + 1;
+	char * combined = (char *)malloc(sizeof(char) * length);
+	strcpy(combined, pfirst);
+	strcat(combined, psecond);
+	return combined;
 }
 
 
@@ -52,13 +58,26 @@ char *make_big_string_from_two( char *pfirst, char *psecond )
 // record those counts in the struct's count values.
 int string_statistics( char *string, struct statistics *p_statistics )
 {
-	// avoid crash in unit_test 12
-	if ( p_statistics != NULL )
-		p_statistics->string_copy = BOGUS_POINTER ;
-	
-	// your code here
+	if (string == NULL || p_statistics == NULL)
+		return 0;
 
-	return 2 ;		// bogus -- fix this!
+	p_statistics->string_copy = malloc(strlen(string) + 1);
+	strcpy(p_statistics->string_copy, string);
+	p_statistics->upper_case_count = 0;
+	p_statistics->lower_case_count = 0;
+	p_statistics->digits_count = 0;
+	char * p_work = string;
+	for (; *p_work != '\0'; p_work++)
+	{
+		if (*p_work >= 'A' && *p_work <= 'Z')
+			p_statistics->upper_case_count += 1;
+		if (*p_work >= 'a' && *p_work <= 'z')
+			p_statistics->lower_case_count += 1;
+		if (*p_work >= '0' && *p_work <= '9')
+			p_statistics->digits_count += 1;
+	}
+
+	return 1;
 }
 
 // p_integers points to an array of integers.
@@ -68,9 +87,18 @@ int string_statistics( char *string, struct statistics *p_statistics )
 // if both parameters are valid return the sum of every odd integer in the array.
 int add_odd_integers( int *p_integers, int number_of_integers )
 {
-	// your code here
+	if (p_integers == NULL || number_of_integers <= 0)
+		return BAD_PARAMETERS;
 
-	return -1 ;		// bogus -- fix this!
+	int sum = 0;
+	int i;
+	for (i = 0; i < number_of_integers; i++)
+	{
+		if (p_integers[i] % 2 != 0)
+			sum += p_integers[i];
+	}
+
+	return sum;
 }
 
 // This function is implemented incorrectly. You need to correct it.
