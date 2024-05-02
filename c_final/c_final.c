@@ -17,8 +17,7 @@
 //           value is 7 and bit_position is 5 -- returns 0
 int get_bit( unsigned int value, int bit_position )
 {
-
-	return 2 ;	// delete this bogus return value
+	return (value >> bit_position) & 1;
 }
 
 // Return a NULL pointer if pfirst or psecond is a NULL pointer..
@@ -48,7 +47,18 @@ int get_bit( unsigned int value, int bit_position )
 //          first character from pfirst.
 char *insert_second_string( char *pfirst, char *psecond )
 {
-	return BOGUS_POINTER ;		// FIX THIS!!
+	if (!pfirst || !psecond)
+	{
+		return NULL;
+	}
+
+	char *combined = malloc(strlen(pfirst) + strlen(psecond) + 1);
+	combined[0] = pfirst[0];
+	strcat(combined, psecond);
+	pfirst++;
+	strcat(combined, pfirst);
+
+	return combined;
 }
 
 
@@ -64,9 +74,19 @@ char *insert_second_string( char *pfirst, char *psecond )
 // You must malloc the minimum size on the heap to create the new string.
 int create_string( struct specs *p_specs )
 {
-	// your code here
+	if (!p_specs)
+	{
+		return 0;
+	}
 
-	return 2 ;		// bogus -- fix this!
+	p_specs->p_new_string = malloc(p_specs->number_of_letters + 1);
+	int i;
+	for (i = 0; i < p_specs->number_of_letters; i++)
+	{
+		p_specs->p_new_string[i] = p_specs->letter;
+	}
+
+	return 1;
 }
 
 // p_integers points to an array of integers.
@@ -77,7 +97,19 @@ int create_string( struct specs *p_specs )
 // Return the sum of all of the integers after they are divided by 2.
 int divide_by_two( int *p_integers, int number_of_integers )
 {
+	if (!p_integers || number_of_integers <= 0)
+	{
+		return BAD_PARAMETERS;
+	}
+	int sum = 0;
+	int i;
+	for (i = 0; i < number_of_integers; i++)
+	{
+		p_integers[i] /= 2;
+		sum += p_integers[i];
+	}
 
-	return -1 ;		// bogus -- fix this!
+	return sum;
+
 }
 
