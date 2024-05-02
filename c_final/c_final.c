@@ -52,8 +52,10 @@ char *insert_second_string( char *pfirst, char *psecond )
 		return NULL;
 	}
 
-	char *combined = malloc(strlen(pfirst) + strlen(psecond) + 1);
+	int length = strlen(pfirst) + strlen(psecond) + 1;
+	char *combined = malloc(length);
 	combined[0] = pfirst[0];
+	combined[1] = '\0';
 	strcat(combined, psecond);
 	pfirst++;
 	strcat(combined, pfirst);
@@ -85,6 +87,7 @@ int create_string( struct specs *p_specs )
 	{
 		p_specs->p_new_string[i] = p_specs->letter;
 	}
+	p_specs->p_new_string[i] = '\0';
 
 	return 1;
 }
