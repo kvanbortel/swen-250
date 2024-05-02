@@ -101,6 +101,7 @@ int divide_by_two( int *p_integers, int number_of_integers )
 	{
 		return BAD_PARAMETERS;
 	}
+
 	int sum = 0;
 	int i;
 	for (i = 0; i < number_of_integers; i++)
@@ -110,6 +111,5 @@ int divide_by_two( int *p_integers, int number_of_integers )
 	}
 
 	return sum;
-
 }
 
