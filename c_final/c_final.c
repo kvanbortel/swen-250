@@ -1,0 +1,83 @@
+// C pointers final practicum 
+// SWEN-250 Spring 2024
+// Larry Kiser May 2, 2024
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include "c_final.h"
+#include "unit_tests.h"
+
+// returns 0 if the bit at the bit_position in value is not set.
+// returns 1 if the bit at the bit_position in value is set.
+// Note that bit_position is a number of 0 through 31 inclusive.
+// The bit_position will always be from 0 through 31.
+// Examples: value is 7 and bit_position is 2 -- returns 1
+//           value is 7 and bit_position is 5 -- returns 0
+int get_bit( unsigned int value, int bit_position )
+{
+
+	return 2 ;	// delete this bogus return value
+}
+
+// Return a NULL pointer if pfirst or psecond is a NULL pointer..
+//
+// The purpose of this function is to create a new string that
+// contains the first character from pfirst, all of the characters
+// in psecond followed by the rest of the characters in pfirst.
+//
+// You can assume that pfirst has at least two characters and
+// that psecond has at least one character.
+//
+// You return this malloc'ed string.
+//
+// NOTE -- you must malloc exactly the amount of space needed to
+// store all of the characters in both strings.
+//
+// Example: pfirst is "start " and psecond is "end". You will
+// create a new string containing "sendtart ". You return a pointer to
+// this new string.
+//
+// You are allowed to use functions like strlen and strcat.
+// PRO TIP: remember that malloc returns uninitialized data!
+//
+// Parameters:
+//		*pfirst is a character pointer to first string to copy to your new string.
+//		*psecond s a character pointer to second string to copied to right after 
+//          first character from pfirst.
+char *insert_second_string( char *pfirst, char *psecond )
+{
+	return BOGUS_POINTER ;		// FIX THIS!!
+}
+
+
+// First checks that the pointer to the passed structure is not NULL.
+// Returns 0 if the passed struct pointer is NULL.
+// Returns 1 if the passed struct pointer is not NULL
+//
+// NOTE -- the struct definition is in c_final.h -- refer to that struct!
+// First malloc exactly enough space to hold the requested number_of_letters.
+// Create a new string contains number_of_letters of the letter in the struct.
+// if number_of_letters is 0 then create an empty string that you malloc'ed.
+// Assign your malloc'ed pointer to the p_new_string pointer in struct spec.
+// You must malloc the minimum size on the heap to create the new string.
+int create_string( struct specs *p_specs )
+{
+	// your code here
+
+	return 2 ;		// bogus -- fix this!
+}
+
+// p_integers points to an array of integers.
+// number_of_integers specifies the length of this array.
+// if p_integers is a NULL pointer return BAD_PARAMETERS (defined in c_final.h)
+// if number_of_integers is zero or negative return BAD_PARAMETERS
+// if both parameters are valid divide every integer in the array by 2.
+// Return the sum of all of the integers after they are divided by 2.
+int divide_by_two( int *p_integers, int number_of_integers )
+{
+
+	return -1 ;		// bogus -- fix this!
+}
+
